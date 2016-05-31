@@ -5,13 +5,16 @@
 //Finally, your logic should calculate all of the employee salaries and report back what the monthly cost of salaries is.
 //console.log("wassup?");
 var newEmployeeList = [];
+var totalSalary = 0;
+var monthlySalary = 0;//var totalSalary = 0;
+var tempSalary = 0;
 
 var createNewEmployee = function(){
   var firstName = document.getElementById('firstName').value;
   var lastName = document.getElementById('lastName').value;
   var companyID = document.getElementById('companyID').value;
   var jobTitle = document.getElementById('jobTitle').value;
-  var empSalary = document.getElementById('empSalary').value;
+  var empSalary = parseInt(document.getElementById('empSalary').value);
   document.getElementById("myForm").reset();
   //var empName = document.getElementById('firstName ' + 'lastName');
 
@@ -22,31 +25,35 @@ var createNewEmployee = function(){
     'jobTitle' : jobTitle,
     'empSalary': empSalary
   };
-
+tempSalary = empSalary;
+console.log(tempSalary);
 
 newEmployeeList.push(newEmployee);
 console.log(newEmployeeList.length);
 console.log(newEmployeeList);
 listEmp();
+upDateSalary();
 };
 
+//var empArray = [];
+//var totalSalary = parseInt(empSalary);
+var upDateSalary = function (){
+  //var numSalary = empSalary;
+  //console.log(tempSalary);
+  totalSalary = tempSalary + totalSalary;
+  monthlySalary = (totalSalary / 12);
+console.log(monthlySalary);
+};
 
-//Displays employees in the DOM
+//Displays to the DOM
 var listEmp = function(){
   document.getElementById("output").innerHTML = "";
   for( var i = 0; i< newEmployeeList.length; i++ ){
-    var empDisplay ="First Name: " + newEmployeeList[i].firstName + ";  Last Name: " + newEmployeeList[i].lastName + ";  CompanyID: " + newEmployeeList[i].companyID + ";  Job Title: " + newEmployeeList[i].jobTitle + "; Employee Salary: " + parseInt(newEmployeeList[i].empSalary);
+    var empDisplay ="First Name: " + newEmployeeList[i].firstName + ";  Last Name: " + newEmployeeList[i].lastName + ";  CompanyID: " + newEmployeeList[i].companyID + ";  Job Title: " + newEmployeeList[i].jobTitle + "; Employee Salary: " + newEmployeeList[i].empSalary;
     document.getElementById("output").innerHTML += '<p>' + empDisplay + '</p>';
   }
 };
 
-//console.log(newEmployeeList[i][4]);
+//for( var i = 0; i <= newEmployeeList.length; i++ ){
 
-
-
-//listEmp();
-//createNewEmployee();
-
-
-
-//document.getElementById('newEmployeeList').innerHTML = "newEmployeeList";
+//}
